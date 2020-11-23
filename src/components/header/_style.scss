@@ -1,0 +1,58 @@
+.header{
+    padding-top: vw(106);
+    &__row{
+        justify-content: space-between;
+    }
+}
+
+.logo{
+    &__img{
+        width: vw(38);
+        height: vw(38);
+    }
+    &__info{
+        margin-left: vw(17);
+    }
+    &__title{
+        font-weight: 800;
+        font-size: vw(24);
+        line-height: 29px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        color: $black;
+    }
+    &__description{
+        font-weight: normal;
+        font-size: vw(16);
+        line-height: 19px;
+        color: $grey;
+    }
+}
+
+.btn{
+    background: $orange;
+    border-radius: vw(30);
+    padding: vw(16) vw(22);
+    color: #fff;
+    position: relative;
+    @include flex-center(space-between);
+    &::before{
+        @include form-center(-60%);
+        content: "";
+        width: 1px;
+        height: vw(25);
+        background: rgba(255, 255, 255, 0.25);
+    }
+    &__price,
+    &__counter{
+        font-weight: normal;
+        font-size: vw(16);
+        line-height: 19px;
+        font-weight: bold;
+    }
+    &__svg{
+        margin:0 vw(8) 0 vw(22);
+        width: vw(16);
+        height: vw(16);
+    }
+}

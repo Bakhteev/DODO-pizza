@@ -1,0 +1,27 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: "Proxima Nova", sans-serif;
+}
+h1 ,h2 ,h3 ,h4 ,h5 ,h6 ,p, ul{
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    display: inline-block;
+    text-decoration: none;
+}
+span{
+    display: inline-block;
+}
+img{
+    max-width: 100%;
+}
+button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
