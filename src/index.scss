@@ -1,7 +1,9 @@
-@import "./scss/mixins";
-@import "./scss/functions";
 @import "./assets/assets";
-@import "./scss/var";
+@import "./scss/functions";
+@import "./scss/mixins";
+@import "./scss/variables";
 @import "./scss/base";
-@import "./scss/classes";
+@import "./scss/columns";
+@import "./scss/components";
+
 @import "./components/global";

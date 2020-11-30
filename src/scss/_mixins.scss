@@ -1,3 +1,9 @@
+@mixin font($size, $weight, $color: #fff) {
+	font-size: $size;
+	font-weight: $weight;
+	color: $color;
+}
+
 @mixin position($abs, $top, $right, $bottom: auto, $left: auto) {
 	position: $abs;
 	top: $top;
@@ -12,9 +18,9 @@
 	align-items: $align-value;
 }
 
-@mixin form-center($x: -50%, $y: -50%) {
+@mixin form-center($X: -50%, $Y: -50%) {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate( $x, $y);
+	transform: translate($X, $Y);
 }

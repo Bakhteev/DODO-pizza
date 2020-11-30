@@ -1,58 +1,76 @@
-.header{
-    padding-top: vw(106);
-    &__row{
-        justify-content: space-between;
-    }
+.header {
+	padding-top: vw(38);
+	padding-bottom: vw(62);
+	&__row {
+		@include flex-center(space-between);
+	}
+	&__button {
+		&::before {
+			content: "";
+			@include form-center(vw(2.5));
+			width: vw(1);
+			height: vw(25);
+			background-color: $color-white;
+			opacity: 0.25;
+		}
+	}
 }
 
-.logo{
-    &__img{
-        width: vw(38);
-        height: vw(38);
-    }
-    &__info{
-        margin-left: vw(17);
-    }
-    &__title{
-        font-weight: 800;
-        font-size: vw(24);
-        line-height: 29px;
-        letter-spacing: 0.01em;
-        text-transform: uppercase;
-        color: $black;
-    }
-    &__description{
-        font-weight: normal;
-        font-size: vw(16);
-        line-height: 19px;
-        color: $grey;
-    }
+.logo {
+	@include flex-center();
+	&__info {
+		margin-left: vw(17);
+	}
+	&__image {
+		width: vw(38);
+		height: vw(38);
+	}
+	&__title {
+		@include font(vw(24), 800, $color-black);
+	}
+	&__description {
+		@include font(vw(16), 400, $color-gray);
+	}
 }
 
-.btn{
-    background: $orange;
-    border-radius: vw(30);
-    padding: vw(16) vw(22);
-    color: #fff;
-    position: relative;
-    @include flex-center(space-between);
-    &::before{
-        @include form-center(-60%);
-        content: "";
-        width: 1px;
-        height: vw(25);
-        background: rgba(255, 255, 255, 0.25);
-    }
-    &__price,
-    &__counter{
-        font-weight: normal;
-        font-size: vw(16);
-        line-height: 19px;
-        font-weight: bold;
-    }
-    &__svg{
-        margin:0 vw(8) 0 vw(22);
-        width: vw(16);
-        height: vw(16);
-    }
+.button {
+	@include flex-center(space-between);
+	position: relative;
+	background-color: $color-orange;
+	border-radius: vw(30);
+	padding: vw(16) vw(22);
+	border: vw(2) solid transparent;
+	transition: 0.3s;
+	&__price,
+	&__count {
+		@include font(vw(16), 700);
+		transition: 0.3s;
+	}
+	&__icon {
+		margin: 0 vw(12) 0 vw(30);
+		width: vw(16);
+		height: vw(16);
+		transition: 0.3s;
+		path {
+			stroke: $color-white;
+			transition: 0.3s;
+		}
+	}
+	&:hover {
+		background-color: $color-white;
+		border: vw(2) solid $color-orange;
+		.button__price,
+		.button__count {
+			color: $color-orange;
+		}
+		.button__icon {
+			fill: $color-orange;
+			path {
+				stroke: $color-orange;
+			}
+		}
+		&::before {
+			background-color: $color-orange;
+		}
+	}
 }

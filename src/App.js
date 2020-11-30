@@ -1,10 +1,15 @@
-import './index.scss'
-import Header from "./components/header"
+import './index.scss';
+import Header from './components/header';
+import Hero from './components/hero';
+import Menu from './components/menu';
 
-
-const App = () => {
+function App() {
   return (
-    <Header />
+    <div className='App'>
+      <Header />
+      <Hero />
+      <Menu />
+    </div>
   );
 }
 
