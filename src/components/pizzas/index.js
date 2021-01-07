@@ -1,21 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Sizes from './sizes';
+import Types from './types';
 
-const Pizzas = ({ id, imageUrl, name, price, types, sizes }) => {
+const Pizzas = ({ id, imageUrl, name, price, types, sizes, description }) => {
   let [counter, setCounter] = useState(0);
-  const [sizeActive, setSizeActive] = useState(0);
-  const [typesActive, setTypesActive] = useState(types[0]);
-
-  const sizesAvailable = [26, 30, 40];
-  const typesNames = ['тонкое', 'традиционное'];
-
-  const typesClick = (i) => {
-    setTypesActive(i);
-  };
-  const sizeClick = (i) => {
-    setSizeActive(i);
-  };
   const counterClick = () => {
     return setCounter(counter + 1);
   };
@@ -24,41 +14,14 @@ const Pizzas = ({ id, imageUrl, name, price, types, sizes }) => {
       <div className='pizzas__item'>
         <img src={imageUrl} alt='pizza1' className='pizzas__image' />
         <h3 className='pizzas__name'>{name}</h3>
-        <div className='pizzas__parameters'>
-          <ul className='pizzas__types'>
-            {typesNames.map((type, index) => {
-              return (
-                <li
-                  onClick={() => typesClick(index)}
-                  key={type}
-                  className={classNames({
-                    'is-active': index === typesActive,
-                    'is-disabled': !types.includes(index),
-                  })}>
-                  {type}
-                </li>
-              );
-            })}
-          </ul>
-          <ul className='pizzas__sizes'>
-            {sizesAvailable.map((size, index) => {
-              // console.log(size);
-              // console.log(sizes, 'sizes');
-              return (
-                <li
-                  onClick={() => sizeClick(index)}
-                  key={size}
-                  className={classNames({
-                    'is-active': index === sizeActive && sizes.includes(size),
-                    'is-disabled': !sizes.includes(size),
-                  })}>
-                  {size} см.
-                </li>
-              );
-            })}
-          </ul>
+        <div className={`${types.length > 0 ? 'pizzas__parameters' : 'pizzas__description'}`}>
+          {types.length > 0 ? <Types types={types} /> : ''}
+          {sizes.length > 0 ? <Sizes sizes={sizes} /> : ''}
+          {sizes.length && types.length > 0
+            ? ''
+            : <p className="pizzas__text">{description}</p>}
         </div>
-        <div className='row pizzas__row pt-15'>
+        <div className='row pizzas__row'>
           <span className='pizzas__price'>от {price} ₽</span>
           <button onClick={() => counterClick()} className='pizzas__button'>
             <span>+</span>
@@ -70,7 +33,6 @@ const Pizzas = ({ id, imageUrl, name, price, types, sizes }) => {
     </div>
   );
 };
-
 
 Pizzas.propTypes = {
   id: PropTypes.number.isRequired,
@@ -87,6 +49,4 @@ Pizzas.defaultProps = {
   name: 'Тут имя пиццы',
 };
 
-
 export default Pizzas;
-

@@ -17,6 +17,7 @@
 	&__row {
 		justify-content: space-between;
 		align-items: center;
+		margin-top: vw(15);
 	}
 	&__image {
 		transition: 10s;
@@ -27,7 +28,8 @@
 		margin: 0 vw(-18);
 	}
 	&__block {
-		padding: 0 vw(18) vw(65);
+		padding: 0 vw(18);
+		margin-bottom: vw(65);
 		box-sizing: border-box;
 	}
 	&__item {
@@ -71,6 +73,17 @@
 			width: 33.33%;
 			margin-top: vw(7);
 		}
+	}
+	&__description {
+		font-size: vw(14);
+    line-height: vw(20);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+		font-weight: 400;
+		color: rgb(115, 121, 140);
+	}
+	&__text{
+		display: flex;
+		flex: content;
 	}
 	&__button {
 		@include font(vw(16), 700);
@@ -133,7 +146,8 @@
 			padding: vmin(5) vmin(5);
 		}
 		&__block {
-			padding: 0 vmin(18) vmin(65);
+			padding: 0 vmin(18);
+			margin-bottom: vmin(65);
 		}
 		&__name {
 			font-size: vmin(20);
