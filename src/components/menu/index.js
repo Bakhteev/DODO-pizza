@@ -33,14 +33,14 @@ function Menu() {
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:3000/database.json`)
+      .get(`http://localhost:3001/database.json`)
       .then((response) => response.data)
       .then(({ pizzas, snacks, desserts }) => {
         setPizzas(pizzas);
         setSnacks(snacks);
         setDesserts(desserts);
       });
-    // dispatch(fetchPizzas(category));
+    dispatch(fetchPizzas(category));
   }, []);
 
   const seitek = useSelector(({ filters }) => {

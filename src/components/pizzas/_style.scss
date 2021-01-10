@@ -16,13 +16,14 @@
 	}
 	&__row {
 		justify-content: space-between;
-		align-items: center;
 		margin-top: vw(15);
 	}
 	&__image {
 		transition: 10s;
 		border-radius: 50%;
 		transform: rotate(0);
+		display: flex;
+		flex: 1 1 auto;
 	}
 	.ajara {
 		margin: 0 vw(-18);
@@ -31,9 +32,12 @@
 		padding: 0 vw(18);
 		margin-bottom: vw(65);
 		box-sizing: border-box;
+		display: flex;
 	}
 	&__item {
 		text-align: center;
+		display: flex;
+		flex-direction: column;
 		&:hover {
 			#{$self}__image {
 				transform: rotate(360deg);
@@ -74,16 +78,17 @@
 			margin-top: vw(7);
 		}
 	}
-	&__description {
+	// &__description {
+		
+	// }
+	&__text{
 		font-size: vw(14);
-    line-height: vw(20);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    	line-height: vw(20);
+    	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 		font-weight: 400;
 		color: rgb(115, 121, 140);
-	}
-	&__text{
 		display: flex;
-		flex: content;
+		flex: 1 1 auto;
 	}
 	&__button {
 		@include font(vw(16), 700);
@@ -182,3 +187,4 @@
 		}
 	}
 }
+
