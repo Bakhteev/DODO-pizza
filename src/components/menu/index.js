@@ -5,7 +5,7 @@ import Pizzas from '../pizzas';
 import setPizzas from '../../redux/actions/pizzas';
 import { setCategory } from '../../redux/actions/filters';
 import { useDispatch, useSelector, connect } from 'react-redux';
-
+import { addPizzaToCart } from '../../redux/actions/cart';
 import { fetchPizzas } from '../../redux/actions/pizzas';
 import axios from 'axios';
 
@@ -28,19 +28,22 @@ function Menu() {
 
   const handleSearchValue = (event) => {
     setSearchValue(event.target.value);
-    console.log(searchValue);
+  };
+
+  const handleAddPizzaToCart = (obj) => {
+    dispatch(addPizzaToCart(obj));
   };
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:3001/database.json`)
+      .get(`https://react-pizza-19afa.web.app/database.json`)
       .then((response) => response.data)
       .then(({ pizzas, snacks, desserts }) => {
-        setPizzas(pizzas);
-        setSnacks(snacks);
-        setDesserts(desserts);
-      });
-    dispatch(fetchPizzas(category));
+        setPizzas(pizzas)
+        setSnacks(snacks)
+        setDesserts(desserts)
+      })
+    // dispatch(fetchPizzas(category));
   }, []);
 
   const seitek = useSelector(({ filters }) => {
@@ -52,8 +55,8 @@ function Menu() {
   return (
     <section className='menu'>
       <div className='container'>
-        <label>
-          <input type='text' placeholder='Поиск пиццы' onChange={(e) => handleSearchValue(e)} />
+        <label className='pizzas__label'>
+          <input className='pizzas__search' type='text' placeholder='Поиск пиццы' onChange={(e) => handleSearchValue(e)} />
         </label>
         <div className='row menu__row'>
           <Filter />
@@ -72,49 +75,9 @@ function Menu() {
               })
               .map((item) => {
                 if (seitek.categoryIndex === -1) {
-                  return <Pizzas {...item} key={item.id} />;
+                  return <Pizzas onClickAddPizza={handleAddPizzaToCart} {...item} key={item.id} />;
                 } else if (item.category === seitek.categoryIndex) {
-                  return <Pizzas {...item} key={item.id} />;
-                }
-              })}
-          </div>
-        </div>
-        <div className='pizzas'>
-          <h2 className='pizzas__title'>Закуски</h2>
-          <div className='row pizzas__row pt-35 ajara'>
-            {snacks
-              .filter((element) => {
-                if (searchValue === '') {
-                  return element;
-                } else if (element.name.toLowerCase().includes(searchValue.toLowerCase())) {
-                  return element;
-                }
-              })
-              .map((item) => {
-                if (seitek.categoryIndex === -1) {
-                  return <Pizzas {...item} key={item.id} />;
-                } else if (item.category === seitek.categoryIndex) {
-                  return <Pizzas {...item} key={item.id} />;
-                }
-              })}
-          </div>
-        </div>
-        <div className='pizzas'>
-          <h2 className='pizzas__title'>Десерты</h2>
-          <div className='row pizzas__row pt-35 ajara'>
-            {desserts
-              .filter((element) => {
-                if (searchValue === '') {
-                  return element;
-                } else if (element.name.toLowerCase().includes(searchValue.toLowerCase())) {
-                  return element;
-                }
-              })
-              .map((item) => {
-                if (seitek.categoryIndex === -1) {
-                  return <Pizzas {...item} key={item.id} />;
-                } else if (item.category === seitek.categoryIndex) {
-                  return <Pizzas {...item} key={item.id} />;
+                  return <Pizzas onClickAddPizza={handleAddPizzaToCart} {...item} key={item.id} />;
                 }
               })}
           </div>
@@ -125,7 +88,4 @@ function Menu() {
 }
 
 export default connect()(Menu);
-
-//  {.map((item) => {
-//                 return <Pizzas {...item} key={item.id} />;
-//               })}
+;

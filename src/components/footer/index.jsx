@@ -11,9 +11,9 @@ const Footer = () => {
                         <p className="footer__text">Если мы не успеем доставить любые продукты, кроме сувенирной продукции и соусов, в течение 60 минут, курьер подарит вам сертификат на большую пиццу.</p>
                     </div>
                     <div className="col-4 footer__item">
-                        <h3 className="footer__title">345 СОМ</h3>
+                        <h3 className="footer__title">345 ₽</h3>
                         <p className="footer__text">Минимальная сумма доставки без учета товаров из категории «Другие товары»</p>
-                        <h3 className="footer__title">7 000 СОМ</h3>
+                        <h3 className="footer__title">7 000 ₽</h3>
                         <p className="footer__text">Максимальная сумма при оплате наличным
                     <span style={{ marginBottom: 10 + 'px' }}>и</span>
                     Изображения продуктов могут отличаться от продуктов в заказе.</p>

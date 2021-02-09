@@ -24,6 +24,7 @@
 	&__image {
 		width: vw(38);
 		height: vw(38);
+		animation: float 4s ease-in-out infinite;
 	}
 	&__title {
 		@include font(vw(24), 800, $color-black);
@@ -56,21 +57,16 @@
 			transition: 0.3s;
 		}
 	}
-	&:hover {
-		background-color: $color-white;
-		border: vw(2) solid $color-orange;
-		.button__price,
-		.button__count {
-			color: $color-orange;
-		}
-		.button__icon {
-			fill: $color-orange;
-			path {
-				stroke: $color-orange;
-			}
-		}
-		&::before {
-			background-color: $color-orange;
-		}
-	}
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(-3px);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+    100% {
+        transform: translateY(-3px);
+    }
 }

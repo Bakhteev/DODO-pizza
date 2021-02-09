@@ -10,17 +10,19 @@ const Types = ({ types }) => {
   return (
     <ul className='pizzas__types'>
       {typesNames.map((type, index) => {
-        return (
-          <li
-            onClick={() => typesClick(index)}
-            key={type}
-            className={classNames({
-              'is-active': index === typesActive,
-              'is-disabled': !types.includes(index),
-            })}>
-            {type}
-          </li>
-        );
+        if (types.length > 0) {
+          return (
+            <li
+              onClick={() => typesClick(index)}
+              key={type}
+              className={classNames({
+                'is-active': index === typesActive,
+                'is-disabled': !types.includes(index),
+              })}>
+              {type}
+            </li>
+          );
+        }
       })}
     </ul>
   );

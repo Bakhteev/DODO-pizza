@@ -10,17 +10,19 @@ const Sizes = ({ sizes }) => {
   return (
     <ul className='pizzas__sizes'>
       {sizesAvailable.map((size, index) => {
-        return (
-          <li
-            onClick={() => sizeClick(index)}
-            key={size}
-            className={classNames({
-              'is-active': index === sizeActive && sizes.includes(size),
-              'is-disabled': !sizes.includes(size),
-            })}>
-            {size} см.
-          </li>
-        );
+        if (sizes.length > 0) {
+          return (
+            <li
+              onClick={() => sizeClick(index)}
+              key={size}
+              className={classNames({
+                'is-active': index === sizeActive && sizes.includes(size),
+                'is-disabled': !sizes.includes(size),
+              })}>
+              {size} см.
+            </li>
+          );
+        }
       })}
     </ul>
   );
